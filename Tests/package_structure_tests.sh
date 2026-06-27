@@ -44,6 +44,17 @@ assert_contains "Packages/com.unitt.avatar-mod/package.json" '"version": "0.1.0"
 assert_contains "Packages/com.unitt.avatar-mod/package.json" '"unity": "2022.3"'
 assert_contains "Packages/com.unitt.avatar-mod/package.json" '"com.vrchat.avatars": ">=3.7.0"'
 
+assert_contains "README.md" 'unitt! unitt! unitt!'
+assert_contains "README.md" '## 日本語'
+assert_contains "README.md" '## English'
+assert_contains "README.md" 'ドラッグ&ドロップ'
+assert_contains "README.md" 'drag-and-drop'
+assert_contains "Packages/com.unitt.avatar-mod/README.md" 'unitt! unitt! unitt!'
+assert_contains "Packages/com.unitt.avatar-mod/README.md" '## 日本語'
+assert_contains "Packages/com.unitt.avatar-mod/README.md" '## English'
+assert_contains "Packages/com.unitt.avatar-mod/README.md" 'ドラッグ&ドロップ'
+assert_contains "Packages/com.unitt.avatar-mod/README.md" 'drag-and-drop'
+
 assert_contains "Packages/com.unitt.avatar-mod/Runtime/UnittModificationProfile.cs" 'CreateAssetMenu('
 assert_contains "Packages/com.unitt.avatar-mod/Runtime/UnittModificationProfile.cs" 'menuName = "Unitt!/Modification Profile"'
 assert_contains "Packages/com.unitt.avatar-mod/Runtime/UnittModificationProfile.cs" 'public string attachBoneName = "Head";'
