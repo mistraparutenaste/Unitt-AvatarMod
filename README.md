@@ -1,10 +1,10 @@
 # Unitt-AvatarMod
 
-> unitt! unitt! unitt! ちいさく、軽く、アバター改変をひとつに。
+> unitt! ちいさく、軽く、アバター改変をひとつに。
 
 ## 日本語
 
-Unitt-AvatarMod は、Unity 上で VRChat 向けアバター改変をドラッグ&ドロップで行うための Unity Editor 拡張です。アバター、改変用 Prefab、Material、設定 Profile をひとつの IMGUI ウィンドウに入れて、Validate、Dry Run、Apply の流れで安全に適用できます。
+Unitt-AvatarMod は、Unity 上で VRChat 向けアバター改変をドラッグ&ドロップで行うための Unity Editor 拡張です。
 
 Unity Editor 内の表示名は、Editor の言語設定に応じて切り替わります。
 
@@ -36,11 +36,7 @@ https://unitt.github.io/Unitt-AvatarMod/vpm/index.json
 
 ### 補足
 
-- Accessory Prefab は指定した Bone が見つかればその配下に、見つからなければ Avatar Root 直下に追加されます。
-- Material 差し替えは、設定が有効な場合に `SkinnedMeshRenderer` の全 slot を対象にします。
-- Scene への変更は Unity Undo に登録されます。
-- VRChat SDK の型は直接参照せず、名前で検出するため、SDK が無い環境でもコンパイルしやすい構成です。
-- Modular Avatar がプロジェクトに無い場合、起動時にインストール案内を表示します。
+- このプロジェクトはcodexを使用して作成されました。
 
 ## English
 
