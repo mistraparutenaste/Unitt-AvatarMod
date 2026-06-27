@@ -1,0 +1,14 @@
+{
+  "name": "Unitt VPM Repository",
+  "id": "com.unitt.vpm",
+  "url": "https://unitt.github.io/Unitt-AvatarMod/vpm/index.json",
+  "author": {
+    "name": "Unitt",
+    "url": "https://github.com/Unitt"
+  },
+  "packages": {
+    "com.unitt.avatar-mod": {
+      "versions": {}
+    }
+  }
+}

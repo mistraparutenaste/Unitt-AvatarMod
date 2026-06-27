@@ -1,0 +1,14 @@
+{
+  "name": "com.unitt.avatar-mod",
+  "displayName": "Unitt!",
+  "version": "0.1.0",
+  "unity": "2022.3",
+  "description": "A drag-and-drop Unity Editor extension for applying avatar modifications.",
+  "author": {
+    "name": "Unitt",
+    "url": "https://github.com/Unitt"
+  },
+  "vpmDependencies": {
+    "com.vrchat.avatars": ">=3.7.0"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Unitt.AvatarMod.Editor",
+  "rootNamespace": "Unitt.AvatarMod.Editor",
+  "references": [
+    "Unitt.AvatarMod.Runtime"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "autoReferenced": true
+}
