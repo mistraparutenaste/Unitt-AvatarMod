@@ -29,6 +29,7 @@ namespace Unitt.AvatarMod.Editor
         {
             titleContent = new GUIContent(UnittLocalization.AppName);
             minSize = new Vector2(420f, 360f);
+            UnittModularAvatarDependency.PromptInstallIfMissing();
 
             if (avatarRoot == null)
             {

@@ -55,11 +55,17 @@ assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittLocalization.cs" 'ret
 
 assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittAvatarModWindow.cs" '[MenuItem("Tools/Unitt!/Open")]'
 assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittAvatarModWindow.cs" 'UnittLocalization.AppName'
+assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittAvatarModWindow.cs" 'UnittModularAvatarDependency.PromptInstallIfMissing();'
 assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittAvatarModWindow.cs" 'Dry Run'
 assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittAvatarModWindow.cs" 'Validate'
 assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittAvatarModWindow.cs" 'Apply'
 
 assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittAvatarDetector.cs" 'VRCAvatarDescriptor'
+assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittModularAvatarDependency.cs" 'nadena.dev.modular-avatar'
+assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittModularAvatarDependency.cs" 'PackageInfo.FindForPackageName'
+assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittModularAvatarDependency.cs" 'EditorUtility.DisplayDialog'
+assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittModularAvatarDependency.cs" 'Application.OpenURL'
+assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittModularAvatarDependency.cs" 'SessionState'
 assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittModificationApplier.cs" 'Undo.RegisterCreatedObjectUndo'
 assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittModificationApplier.cs" 'Undo.RecordObject'
 assert_contains "Packages/com.unitt.avatar-mod/Editor/UnittModificationApplier.cs" 'EditorUtility.SetDirty'
