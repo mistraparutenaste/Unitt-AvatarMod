@@ -7,19 +7,10 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     env:
       PACKAGE_NAME: com.unitt.avatar-mod
       PACKAGE_PATH: Packages/com.unitt.avatar-mod
@@ -72,16 +63,10 @@ jobs:
             }' vpm/index.json > vpm/index.json.tmp
           mv vpm/index.json.tmp vpm/index.json
 
-      - name: Prepare Pages artifact
-        run: |
-          mkdir -p _site/vpm
-          cp vpm/index.json _site/vpm/index.json
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy vpm/index.json to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: ./_site
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./vpm
+          destination_dir: vpm
+          keep_files: false
