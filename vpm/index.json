@@ -15,7 +15,7 @@
           "unity": "2022.3",
           "description": "A drag-and-drop Unity Editor extension for applying avatar modifications.",
           "url": "https://github.com/mistraparutenaste/Unitt-AvatarMod/releases/download/v0.1.0/com.unitt.avatar-mod-0.1.0.zip",
-          "sha256": "",
+          "sha256": "215ffc3620efb71e8b61ddb2602a133c382e6762220f30ed1df014dcef2a8451",
           "vpmDependencies": {
             "com.vrchat.avatars": ">=3.7.0"
           }
