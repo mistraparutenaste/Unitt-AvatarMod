@@ -1,10 +1,10 @@
 {
   "name": "Unitt VPM Repository",
   "id": "com.unitt.vpm",
-  "url": "https://unitt.github.io/Unitt-AvatarMod/vpm/index.json",
+  "url": "https://mistraparutenaste.github.io/Unitt-AvatarMod/vpm/index.json",
   "author": {
-    "name": "Unitt",
-    "url": "https://github.com/Unitt"
+    "name": "mistraparutenaste",
+    "url": "https://github.com/mistraparutenaste"
   },
   "packages": {
     "com.unitt.avatar-mod": {

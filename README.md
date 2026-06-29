@@ -18,7 +18,7 @@ Unity Editor 内の表示名は、Editor の言語設定に応じて切り替わ
 VCC または ALCOM に以下の VPM Repository URL を追加してください。
 
 ```text
-https://unitt.github.io/Unitt-AvatarMod/vpm/index.json
+https://mistraparutenaste.github.io/Unitt-AvatarMod/vpm/index.json
 ```
 
 その後、Unity 2022.3 のアバタープロジェクトに `com.unitt.avatar-mod` を追加します。
@@ -67,7 +67,7 @@ The menu path is fixed as `Tools > Unitt! > Open` because Unity menu attributes 
 Add this VPM repository URL to VCC or ALCOM.
 
 ```text
-https://unitt.github.io/Unitt-AvatarMod/vpm/index.json
+https://mistraparutenaste.github.io/Unitt-AvatarMod/vpm/index.json
 ```
 
 Then add `com.unitt.avatar-mod` to a Unity 2022.3 avatar project.

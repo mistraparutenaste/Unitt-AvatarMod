@@ -7,10 +7,19 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     env:
       PACKAGE_NAME: com.unitt.avatar-mod
       PACKAGE_PATH: Packages/com.unitt.avatar-mod
@@ -20,16 +29,59 @@ jobs:
 
       - name: Create package zip
         run: |
-          VERSION="${GITHUB_REF_NAME}"
+          VERSION="${GITHUB_REF_NAME#v}"
           ZIP_NAME="${PACKAGE_NAME}-${VERSION}.zip"
           cd "${PACKAGE_PATH}"
           zip -r "../../../${ZIP_NAME}" .
           cd -
-          sha256sum "${ZIP_NAME}" > "${ZIP_NAME}.sha256"
+          SHA256=$(sha256sum "${ZIP_NAME}" | cut -d' ' -f1)
+          echo "$SHA256  ${ZIP_NAME}" > "${ZIP_NAME}.sha256"
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          echo "ZIP_NAME=${ZIP_NAME}" >> $GITHUB_ENV
+          echo "SHA256=${SHA256}" >> $GITHUB_ENV
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            com.unitt.avatar-mod-${{ github.ref_name }}.zip
-            com.unitt.avatar-mod-${{ github.ref_name }}.zip.sha256
+            ${{ env.ZIP_NAME }}
+            ${{ env.ZIP_NAME }}.sha256
+
+      - name: Update vpm/index.json
+        run: |
+          ZIP_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${GITHUB_REF_NAME}/${ZIP_NAME}"
+          PACKAGE_DESC=$(jq -r '.description' "${PACKAGE_PATH}/package.json")
+          UNITY_VERSION=$(jq -r '.unity' "${PACKAGE_PATH}/package.json")
+          VPM_DEPS=$(jq -c '.vpmDependencies // {}' "${PACKAGE_PATH}/package.json")
+          jq \
+            --arg version "$VERSION" \
+            --arg name "$PACKAGE_NAME" \
+            --arg url "$ZIP_URL" \
+            --arg sha256 "$SHA256" \
+            --arg unity "$UNITY_VERSION" \
+            --arg desc "$PACKAGE_DESC" \
+            --argjson deps "$VPM_DEPS" \
+            '.packages[$name].versions[$version] = {
+              "name": $name,
+              "version": $version,
+              "unity": $unity,
+              "description": $desc,
+              "url": $url,
+              "sha256": $sha256,
+              "vpmDependencies": $deps
+            }' vpm/index.json > vpm/index.json.tmp
+          mv vpm/index.json.tmp vpm/index.json
+
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p _site/vpm
+          cp vpm/index.json _site/vpm/index.json
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
